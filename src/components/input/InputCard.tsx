@@ -100,7 +100,7 @@ const InputCard = (props: Props) => {
     });
     setIsloading(false);
     if (res.status === 201) {
-      setLink(undefined);
+      setLink('');
       setLinks((state) => {
         if (state) {
           localStorage.setItem(
@@ -112,6 +112,9 @@ const InputCard = (props: Props) => {
         localStorage.setItem("shrtlnks", JSON.stringify([res.data]));
         return [res.data];
       });
+    }
+    if (res.status >= 400) {
+      setError(res.data.message);
     }
   };
   useEffect(() => {
@@ -144,6 +147,7 @@ const InputCard = (props: Props) => {
         <div className="flex flex-col tablet:flex-row   gap-4">
           <input
             type="text"
+            value={link}
             className={`text-xl px-8 py-4 w-full rounded-lg  outline-none border-2 ${
               error ? ` error` : ""
             }`}
