@@ -100,6 +100,7 @@ const InputCard = (props: Props) => {
     });
     setIsloading(false);
     if (res.status === 201) {
+      setLink(undefined);
       setLinks((state) => {
         if (state) {
           localStorage.setItem(
