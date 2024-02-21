@@ -26,10 +26,10 @@ const Navbar = (props: Props) => {
   return (
     <div>
       {" "}
-      <div className="tablet:py-4 p-4 tablet:p-0 flex w-full laptop:px-48 items-center justify-between">
+      <div className="tablet:py-4 p-4 tablet:p-0 flex h-[10vh] w-full tablet:px-48 laptop:px-48   items-center justify-between">
         <div className="w-fit  flex items-center ">
           <div className="w-fit">
-            <img src={logo} alt="Shortly" className="h-8   laptop:h-12" />
+            <img src={logo} alt="Shortly" className="h-8 laptop:h-12" />
           </div>
           <ul className="hidden tablet:flex gap-8  mx-8">
             {navList.map((item) => (
@@ -49,36 +49,41 @@ const Navbar = (props: Props) => {
             color="hsl(257, 7%, 63%)"
           />
         </div>
-        <div className="hidden tablet:flex gap-4 ">
+        <div className="hidden tablet:flex gap-4  ">
           <Button
             text="Login"
-            style={`fontind-bold text-2xl rounded-full text-gray px-4 p-2 hover:bg-primary  hover:text-white`}
+            style={`font-bold text-2xl text-gray-violet rounded-full text-gray tablet:w-[6em] px-4 p-2 hover:bg-primary  hover:text-white`}
           />
           <Button
-            text="Signup"
-            style={`font-bold text-2xl rounded-full  px-4 p-2 bg-primary  text-white`}
+            text="Sign up"
+            style={`font-bold text-2xl rounded-full tablet:w-[6em] px-4 p-2 bg-primary  text-white`}
           />
         </div>
       </div>
       {toggle && (
-        <div className="  flex tablet:hidden w-full   items-center justify-between  p-4">
+        <div className=" flex tablet:hidden w-full   items-center justify-between  p-4">
           <ul className="flex tablet:hidden flex-col items-center w-full rounded-xl gap-4  bg-primary-dark p-4">
             {navList.map((item) => (
-              <li
-                key={item.item}
-                className="hover:text-dark-blue font-bold text-2xl text-white"
-              >
-                <Link to={item.link}>{item.item}</Link>
+              <li key={item.item} className=" font-bold text-2xl text-white">
+                <Link to={item.link} onClick={() => setToggle(!toggle)}>
+                  {item.item}
+                </Link>
               </li>
             ))}{" "}
-            <hr className="bg-red-400" />
-            <li className="border-t-2 w-full border-gray-violet    flex justify-center ">
+            <li className="border-t-2 border-gray-violet   w-full"></li>
+            <li
+              className=" w-full flex justify-center "
+              onClick={() => setToggle(!toggle)}
+            >
               <Button
                 text="Login"
-                style={`fontind-bold text-2xl rounded-full text-gray px-4 p-2 hover:bg-primary  hover:text-white`}
+                style={`fontind-bold text-2xl w-full rounded-full text-gray px-4 p-2 hover:bg-primary  hover:text-white`}
               />
             </li>
-            <li className="w-full flex justify-center ">
+            <li
+              className="w-full flex justify-center "
+              onClick={() => setToggle(!toggle)}
+            >
               {" "}
               <Button
                 text="Signup"
@@ -89,6 +94,7 @@ const Navbar = (props: Props) => {
         </div>
       )}
     </div>
+
   );
 };
 

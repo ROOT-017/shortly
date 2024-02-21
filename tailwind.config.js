@@ -19,6 +19,7 @@ module.exports = {
         "gray-violet": "hsl(257, 7%, 63%)",
         "dark-blue": "hsl(255, 11%, 22%)",
         "very-dark-violet": "hsl(260, 8%, 14%)",
+        background: "hsl(223, 28%, 95%)",
       },
       fontSize: {
         "18px": "18px",
