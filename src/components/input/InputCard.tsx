@@ -95,7 +95,6 @@ const InputCard = (props: Props) => {
       },
     });
     setIsloading(false);
-    console.log(res);
     if (!res.error) {
       setLink("");
       setLinks((state) => {
