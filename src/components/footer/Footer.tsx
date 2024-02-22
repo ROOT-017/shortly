@@ -30,7 +30,7 @@ const items = [
         url: "#",
       },
       {
-        title: "Developer",
+        title: "Developers",
         url: "#",
       },
       {
