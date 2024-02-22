@@ -15,21 +15,21 @@ const Hero = (props: Props) => {
       </div>
       <div className="flex flex-col items-center text-center tablet:text-left tablet:items-start gap-4">
         <h2
-          className="text-[2em] tablet:text-[6em] font-sans font-extrabold"
+          className="text-[2em] laptop:text-[4em] font-sans font-extrabold"
           style={{
             lineHeight: "1.02",
           }}
         >
           More than just <br className="hidden tablet:inline-block" /> shorter
-          links Shortly
+          links
         </h2>
-        <p className="text-lg laptop:text-2xl text-gray-violet font-semibold">
-          Build your brand'd recognition and get detailed{" "}
+        <p className="text-lg laptop:text-2xl text-gray-violet font-[500]">
+          Build your brand's recognition and get detailed{" "}
           <br className="hidden tablet:inline-block" /> insights on how your
           links are performing.
         </p>
         <div className="pt-10">
-          <button className="font-bold font-sans text-2xl rounded-full  py-4 px-6 bg-primary  text-white">
+          <button className="font-semibold font-sans text-2xl rounded-full  py-4 px-6 bg-primary  text-white">
             {" "}
             Get Started
           </button>

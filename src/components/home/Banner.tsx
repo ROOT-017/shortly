@@ -20,9 +20,7 @@ const Banner = (props: Props) => {
         backgroundImage: `url(${deviceWidth > 390 ? bgdeskstop : bgmobile})`,
       }}
     >
-      <h1 className="text-3xl font-extrabold  text-white">
-        Boost your links today
-      </h1>
+      <h1 className="text-3xl font-bold  text-white">Boost your links today</h1>
       <button className="font-bold font-sans text-xl rounded-full  py-3 px-6 bg-primary  text-white">
         Get Started
       </button>

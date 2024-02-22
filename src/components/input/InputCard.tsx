@@ -3,6 +3,7 @@ import bgdeskstop from "../../assest/images/bg-boost-desktop.svg";
 import bgmobile from "../../assest/images/bg-boost-mobile.svg";
 import loading from "../../assest/images/icons8-loading.gif";
 import axios from "axios";
+import { SendRequest } from "../../api/sendRequest";
 
 type Props = {};
 
@@ -31,7 +32,7 @@ const Links = ({ link, shrtlnk }: linkProps) => {
   return (
     <div className="flex flex-col tablet:flex-row rounded-lg tablet:items-center justify-between  bg-white w-full text-xl">
       <p
-        className="text-dark-blue max-w-[375px] laptop:max-w-full font-bold border-b-2 laptop:border-none p-6 pb-2 border-background"
+        className="text-dark-blue max-w-[375px] laptop:max-w-full  border-b-2 laptop:border-none p-6 pb-2 border-background"
         style={{
           whiteSpace: "nowrap",
           overflow: "hidden",
@@ -41,10 +42,10 @@ const Links = ({ link, shrtlnk }: linkProps) => {
         {link}
       </p>
       <div className="flex gap-4 tablet:items-center flex-col p-6 pt-2   w-full tablet:w-fit tablet:flex-row">
-        <p className="text-primary font-bold py-2">{shrtlnk}</p>
+        <p className="text-primary  py-2">{shrtlnk}</p>
         <button
           style={buttonInnerStyle}
-          className=" rounded-md font-bold w-full tablet:w-fit py-2 px-6 text-white"
+          className=" rounded-md font-semibold w-full tablet:w-fit py-2 px-6 text-white"
           onClick={async () => {
             const state = await copyToClipboard(shrtlnk);
             if (state) {
@@ -66,7 +67,7 @@ const Links = ({ link, shrtlnk }: linkProps) => {
 
 const InputCard = (props: Props) => {
   const [error, setError] = useState<string | undefined>();
-  const [link, setLink] = useState<string | undefined>();
+  const [link, setLink] = useState("");
   const [links, setLinks] = useState<
     | {
         url: string;
@@ -86,21 +87,17 @@ const InputCard = (props: Props) => {
 
     setLink(link);
     setIsloading(true);
-    const res = await axios({
-      method: "post",
-      url: "https://shrtlnk.dev/api/v2/link",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "api-key": process.env.REACT_APP_API_KEY,
-      },
+    const res = await SendRequest({
+      method: "POST",
+      url: "/api/v2/link",
       data: {
         url: link,
       },
     });
     setIsloading(false);
-    if (res.status === 201) {
-      setLink('');
+    console.log(res);
+    if (!res.error) {
+      setLink("");
       setLinks((state) => {
         if (state) {
           localStorage.setItem(
@@ -113,8 +110,11 @@ const InputCard = (props: Props) => {
         return [res.data];
       });
     }
-    if (res.status >= 400) {
-      setError(res.data.message);
+    if (res.status === 451) {
+      setError(res.error.data.message);
+    }
+    if (res.status === 400) {
+      setError(res.error);
     }
   };
   useEffect(() => {
@@ -163,7 +163,7 @@ const InputCard = (props: Props) => {
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-primary rounded-lg laptop:w-[12em] px-8 py-4   text-xl font-bold text-white"
+            className="bg-primary rounded-lg laptop:w-[12em] px-8 py-4   text-xl font-semibold text-white"
           >
             {isLoading ? "Please wait..." : "Shorten It!"}
           </button>

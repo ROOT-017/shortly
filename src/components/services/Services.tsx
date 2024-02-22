@@ -29,16 +29,14 @@ const Services = (props: Props) => {
   return (
     <div className="bg-background p-8 py-24">
       <div className="flex flex-col gap-3 py-8">
-        <h1 className="text-center font-extrabold text-3xl">
-          Advanced Statistics
-        </h1>
-        <p className="text-center font-bold text-xl text-gray-violet">
+        <h1 className="text-center font-bold text-3xl">Advanced Statistics</h1>
+        <p className="text-center font-semibold text-xl text-gray-violet">
           Track how your links performing across the web with{" "}
           <br className="hidden laptop:inline-block" />
           our advanced statistics dashboard
         </p>
       </div>
-      <div className="services  laptop:flex hidden items-center justify-center    mt-12">
+      <div className="services laptop:flex hidden items-center justify-center mt-12">
         {data.map((item, index) => (
           <>
             <StatsCard
@@ -47,14 +45,14 @@ const Services = (props: Props) => {
               description={item.description}
               icon={item.icon}
               style={{
-                marginTop: `${index * 50}px`,
+                marginTop: `${index * 6}em`,
               }}
             />
             {data.length - 1 !== index && (
               <div
-                key={index + item.title}
+                key={index}
                 style={{
-                  marginTop: `${index * 50}px`,
+                  marginTop: `${index * 6}em`,
                 }}
                 className="h-2 w-16 bg-primary "
               />
@@ -65,7 +63,6 @@ const Services = (props: Props) => {
       <div className="laptop:hidden flex laptop:flex-row justify-center gap-4 flex-col mt-12">
         {data.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
-            {" "}
             <StatsCard
               key={item.title}
               title={item.title}
@@ -73,7 +70,7 @@ const Services = (props: Props) => {
               icon={item.icon}
             />
             {data.length - 1 !== index && (
-              <div className="h-24 w-2 bg-primary " />
+              <div key={index} className="h-24 w-2 bg-primary " />
             )}
           </div>
         ))}
