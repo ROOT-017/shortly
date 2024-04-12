@@ -113,51 +113,57 @@ const socialConnect = [
 ];
 const Footer = (props: Props) => {
   return (
-    <div className="flex flex-col laptop:flex-row bg-dark-blue w-full laptop:py-16">
-      <div className="w-full flex justify-center items-center laptop:items-start laptop:w-[40%] h-[6em] laptop:h-auto">
-        <img src={logo} alt="Shortly" className="h-[3em]" />
-      </div>
-      <div className="flex flex-col laptop:flex-row laptop:justify-around gap-8 w-full laptop:w-[40%]">
-        {items.map((item) => (
-          <div className="flex flex-col gap-6 laptop:gap-2" key={item.title}>
-            <h1 className="text-center laptop:text-start text-2xl text-white">
-              {item.title}
-            </h1>
-            <ul className="flex gap-3 laptop:gap-4 flex-col  text-center laptop:text-start">
-              {item.items.map((elt) => (
-                <Link key={elt.title} to={elt.url}>
-                  {" "}
-                  <li className="hover:text-primary font-bold text-xl text-gray-violet">
-                    {elt.title}
-                  </li>
-                </Link>
+    <div>
+      {" "}
+      <div className="flex flex-col laptop:flex-row bg-dark-blue w-full laptop:py-16">
+        <div className="w-full flex justify-center items-center laptop:items-start laptop:w-[40%] h-[6em] laptop:h-auto">
+          <img src={logo} alt="Shortly" className="h-[3em]" />
+        </div>
+        <div className="flex flex-col laptop:flex-row laptop:justify-around gap-8 w-full laptop:w-[40%]">
+          {items.map((item) => (
+            <div className="flex flex-col gap-6 laptop:gap-2" key={item.title}>
+              <h1 className="text-center laptop:text-start text-2xl text-white">
+                {item.title}
+              </h1>
+              <ul className="flex gap-3 laptop:gap-4 flex-col  text-center laptop:text-start">
+                {item.items.map((elt) => (
+                  <Link key={elt.title} to={elt.url}>
+                    {" "}
+                    <li className="hover:text-primary font-bold text-xl text-gray-violet">
+                      {elt.title}
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="w-full  laptop:w-[20%] ">
+          {
+            <ul className="flex w-full  gap-8 justify-center py-8 laptop:py-0 items-center">
+              {socialConnect.map((item) => (
+                <li className="overflow-hidden " key={item.title}>
+                  <Link
+                    key={item.title}
+                    to={item.url}
+                    className="hover:bg-primary rounded-full overflow-hidden"
+                  >
+                    {/* <img
+                  key={item.title}
+                  className="bg-transparent"
+                  alt={item.title}
+                  src={item.icon}
+                /> */}
+                    {item.icon}
+                  </Link>
+                </li>
               ))}
             </ul>
-          </div>
-        ))}
+          }
+        </div>
       </div>
-      <div className="w-full  laptop:w-[20%] ">
-        {
-          <ul className="flex w-full  gap-8 justify-center py-8 laptop:py-0 items-center">
-            {socialConnect.map((item) => (
-              <li className="overflow-hidden " key={item.title}>
-                <Link
-                  key={item.title}
-                  to={item.url}
-                  className="hover:bg-primary rounded-full overflow-hidden"
-                >
-                  {/* <img
-                    key={item.title}
-                    className="bg-transparent"
-                    alt={item.title}
-                    src={item.icon}
-                  /> */}
-                  {item.icon}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        }
+      <div className=" text-white text-md py-3 bg-dark-blue text-center">
+        Made with ♥️ in Cameroon by <a href="https://nkwetacha-terence-root-017.vercel.app/">TERENCE N</a>
       </div>
     </div>
   );
